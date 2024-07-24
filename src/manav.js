@@ -1,10 +1,14 @@
 'use strict';
 
-const extensionActive = false;
-
 /**
  * React to Messages from service worker/background.js
  */
-browser.runtime.onMessage.addListener((msg) => {
-	console.log(msg);
-});
+chrome.runtime.onMessage.addListener(handleState);
+
+// Default Extension State OFF
+let isExtensionActive = false;
+
+function handleState(state, _) {
+	isExtensionActive = state;
+	console.log(isExtensionActive);
+}

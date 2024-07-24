@@ -1,11 +1,9 @@
 {
-	"name": "MANav",
+	"name": "manav",
 	"version": "0.1.0",
 	"description": "MANav aka Manga Alternative Navigation is a FF Extension that adds Prev/Next Page Navigation mapped to Arrow Keys for Sites that dont provide this feature natively.",
 	"main": "manav.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
+	"scripts": {},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/m-grohs/MANav.git"

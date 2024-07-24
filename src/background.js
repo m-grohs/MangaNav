@@ -1,22 +1,16 @@
 /**
  * @file background.js for Browser Extension MANAv
- * @copyright m-grohs 2023
+ * @copyright m-grohs 2023-2024
  */
 
-/**
- * @bug @function handleClick() and @function handleUpdate() can interfere with each other when the Site is
- * not completed yet. (giving OFF Signal even tho it should be ON)
- * You can click Extension Button and change State and Storage even tho @function handleUpdate() is not done yet
- *
- * @todo @function setIcon rewrite without using bools but including check for it
- * @todo remove @var SITE_STATUS and rewrite to integrate Status without it
- */
+chrome.tabs.onUpdated.addListener(handleUpdate);
+chrome.action.onClicked.addListener(handleOnClick);
 
 const SETTINGS = {
 	DB_NAME: 'MANAvActiveSites',
 	SITE_STATUS: false,
-	ICON_ON: './icons/manav-on.svg',
-	ICON_OFF: './icons/manav-off.svg'
+	ICON_ON: 'icons/manav-on.svg',
+	ICON_OFF: 'icons/manav-off.svg'
 };
 
 /**
@@ -82,27 +76,23 @@ function switchIcon(bool) {
 /**
  * Sends a Signal to content script
  * @param {number} tabID - the ID of the active Tab
- * @param {string} msg - the Message to send
+ * @param {string} state - the Message to send
  */
-function sendSignal(tabID, msg) {
-	browser.tabs.sendMessage(tabID, msg);
+function sendSignal(tabID, state) {
+	browser.tabs.sendMessage(tabID, state);
 }
-// testing
-const count = 0;
 
 /**
  * Handles Update Event from the active Tab
- * @param {number} tabID - the ID of the active Tab
+ * @param {number} _ - tabID - the ID of the active Tab
  * @param {*} changeInfo - the ChangeInfo Object that fires everytime anything changes in the Tab
  * @param {*} tab - the finished Tab Object
  *
  * @Info the changeInfo Object is changing everytime the Event is fired ending in only
  * a changeInfo.status === complete State.
  * to Send Messages properly to the content script we need to wait until this Event is finished
- *
- * @todo Rewrite so we dont use @var SITE_STATUS and wait for complete Status to do anything
  */
-async function handleUpdate(tabID, changeInfo, tab) {
+async function handleUpdate(_, changeInfo, tab) {
 	// Get URL and check it against the Active Sites Array
 	if (changeInfo.url) {
 		const originURL = await stripToOriginURL(changeInfo.url);
@@ -118,41 +108,40 @@ async function handleUpdate(tabID, changeInfo, tab) {
 	// After checking and waiting for the changeInfo event to finish
 	// Depending on the Outcome switch Extension Icon and send Message to content script!
 	if (changeInfo.status === 'complete' && tab.status === 'complete') {
+		// Switch Icon dependint of SITE_STATUS
 		if (SETTINGS.SITE_STATUS) {
-			// Switch to On Icon and send Signal to Tab
-			console.log('site is in array');
+			console.log('is in');
 			switchIcon(true);
-			sendSignal(tabID, 'bg.js -> send msg from true');
-		} else {
-			console.log('site is not in array');
-			switchIcon(false);
-			sendSignal(tabID, 'bg.js -> send msg from false');
+			return;
 		}
+
+		console.log('its not in');
+		switchIcon(false);
 	}
 }
 
 /**
  * Handle onClick Events from the Extension Button
  * @param {*} tab - Tab Object
- * @param {*} onClickData
+ * @param {*} _ - onClickData unused
  */
-async function handleOnClick(tab, onClickData) {
+async function handleOnClick(tab, _) {
 	if (tab.status === 'complete') {
 		const originURL = await stripToOriginURL(tab.url);
 		const activeSiteURLs = await getURLs();
 
-		// Add/Remove URL from Active Site Array and use correct Icon for the State after
+		// Add/Remove URL from Active Site Array
+		// Switch Icon to correct State and send said State to content script
 		if (await checkURL(originURL, activeSiteURLs)) {
 			activeSiteURLs.splice(activeSiteURLs.indexOf(originURL), 1);
 			switchIcon(false);
+			sendSignal(tab.id, false);
 		} else {
 			activeSiteURLs.push(originURL);
 			switchIcon(true);
+			sendSignal(tab.id, true);
 		}
 
 		await setURLs(activeSiteURLs);
 	}
 }
-
-browser.tabs.onUpdated.addListener(handleUpdate);
-browser.action.onClicked.addListener(handleOnClick);
