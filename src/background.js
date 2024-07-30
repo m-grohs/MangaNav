@@ -9,8 +9,8 @@ chrome.action.onClicked.addListener(handleOnClick);
 const SETTINGS = {
 	DB_NAME: 'MANAvActiveSites',
 	SITE_STATUS: false,
-	ICON_ON: 'icons/manav-on.svg',
-	ICON_OFF: 'icons/manav-off.svg'
+	ICON_ON: 'src/icons/manav-on.svg',
+	ICON_OFF: 'src/icons/manav-off.svg'
 };
 
 /**
@@ -110,12 +110,11 @@ async function handleUpdate(_, changeInfo, tab) {
 	if (changeInfo.status === 'complete' && tab.status === 'complete') {
 		// Switch Icon dependint of SITE_STATUS
 		if (SETTINGS.SITE_STATUS) {
-			console.log('is in');
 			switchIcon(true);
+			sendSignal(tab.id, true);
 			return;
 		}
 
-		console.log('its not in');
 		switchIcon(false);
 	}
 }
