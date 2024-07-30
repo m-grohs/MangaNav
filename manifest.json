@@ -16,5 +16,10 @@
 	"background": {
 		"scripts": ["src/background.js"]
 	},
-	"permissions": ["tabs", "storage"]
+	"permissions": ["tabs", "storage"],
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "manav.m-grohs@github.com"
+		}
+	}
 }
