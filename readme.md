@@ -1,5 +1,6 @@
 > [!WARNING]
-> This Extension is a WIP and is non Functional
+> v0.1.0 has been released and is working.
+> Use this Extension at your own risk. (Not like something bad will happen)
 
 ### MANav Browser Extension
 
