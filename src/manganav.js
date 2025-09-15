@@ -13,7 +13,6 @@ let prevHref, nextHref;
  * @param {*} state
  */
 function handleState(state) {
-	// console.clear();
 	isExtensionActive = state;
 
 	if (isExtensionActive === true) {

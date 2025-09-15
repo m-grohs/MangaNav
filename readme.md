@@ -1,8 +1,10 @@
-## MANav Browser Extension
+## MangaNav Browser Extension
 
-MANav aka Manga Alternative Navigation is a Browser Extension that provides Navigational Keybindings for Previous/Next Chapter on Manga Sites that don't have this Feature by Default.
+MangaNav is a Browser Extension that adds Previous/Next Page Navigation mapped to Left/Right Arrow Keys for Manga Sites that do not provide this Feature natively.
 
-Any Site can be added/deleted to the active Site Array with the Extension Action Button.
+
+You can add any Site, but this Extension is specifically looking for a link with previous/next Context and maps the left/right Arrow Keys to the first link it finds rendering it non functional on Sites that dont have such Context.
+
 
 > [!IMPORTANT]
 > This Extension sources it functionality from the Website it is active on.
@@ -17,17 +19,12 @@ Any Site can be added/deleted to the active Site Array with the Extension Action
 -   Firefox only:
 
 ```
-Click/Download the latest *.xpi from [Releases](https://github.com/m-grohs/MANav/releases)
+Download the latest *.xpi/*.zip from [Releases](https://github.com/m-grohs/MangaNav/releases)
+
 ```
 
 > [!NOTE]
 > At this Point in Time this is a Firefox only Extension.
-> If there is a need, a Chrome version can be provided.
+> A Chrome version is planned in the Future.
 
 ---
-
-### Previous Extension
-
-A Previous Extension built around finding Class Names to search for Navigational Links can be found here. (Archived and not Maintained)
-
-https://github.com/m-grohs/Manga-Arrows

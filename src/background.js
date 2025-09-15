@@ -1,16 +1,12 @@
-/**
- * @file background.js for Browser Extension MANAv
- * @copyright m-grohs 2023-2024
- */
-
+// src/background.js
 chrome.tabs.onUpdated.addListener(handleUpdate);
 chrome.action.onClicked.addListener(handleOnClick);
 
 const SETTINGS = {
-	DB_NAME: 'MANAvActiveSites',
+	DB_NAME: 'MangaNav-ActiveSites',
 	SITE_STATUS: false,
-	ICON_ON: 'src/icons/manav-on.svg',
-	ICON_OFF: 'src/icons/manav-off.svg'
+	ICON_ON: 'src/icons/MangaNavRemove.png',
+	ICON_OFF: 'src/icons/MangaNavAdd.png'
 };
 
 /**
