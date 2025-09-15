@@ -3,12 +3,9 @@
 MangaNav is a Browser Extension that adds Previous/Next Page Navigation mapped to Left/Right Arrow Keys for Manga Sites that do not provide this Feature natively.
 
 
-You can add any Site, but this Extension is specifically looking for a link with previous/next Context and maps the left/right Arrow Keys to the first link it finds rendering it non functional on Sites that dont have such Context.
-
-
 > [!IMPORTANT]
 > This Extension sources it functionality from the Website it is active on.
-> Working Navigational Links need to be present for it to bind the correct href's.
+> Working Navigational Links need to be present for it to bind the correct href's otherwise there will be no Effect.
 > There has been only one Instance so far where the Extension failed, but the Site in question
 > had broken navigation and as such could not source the correct href's.
 
