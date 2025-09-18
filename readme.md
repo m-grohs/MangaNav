@@ -2,6 +2,8 @@
 
 MangaNav is a Browser Extension that adds Previous/Next Page Navigation mapped to Left/Right Arrow Keys for Manga Sites that do not provide this Feature natively.
 
+[Download @ Firefox Add-ons](https://addons.mozilla.org/en-GB/firefox/addon/manganav/)
+
 
 > [!IMPORTANT]
 > This Extension sources it functionality from the Website it is active on.
@@ -15,10 +17,7 @@ MangaNav is a Browser Extension that adds Previous/Next Page Navigation mapped t
 
 -   Firefox only:
 
-```
-Download the latest *.xpi/*.zip from [Releases](https://github.com/m-grohs/MangaNav/releases)
-
-```
+Download the latest *.xpi/*.zip from [Releases](https://github.com/m-grohs/MangaNav/releases) or directly from [Firefox Add-ons](https://addons.mozilla.org/en-GB/firefox/addon/manganav/)
 
 > [!NOTE]
 > At this Point in Time this is a Firefox only Extension.
