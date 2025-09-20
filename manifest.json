@@ -1,11 +1,18 @@
 {
 	"manifest_version": 3,
 	"name": "MangaNav",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "MangaNav is a Browser Extension that adds Previous/Next Page Navigation mapped to Left/Right Arrow Keys for Manga Sites that do not provide this Feature natively.",
+	"icon": {
+		"16": "src/icons/MangaNavIcon-16.png",
+		"32": "src/icons/MangaNavIcon-32.png",
+		"48": "src/icons/MangaNavIcon-48.png",
+		"64": "src/icons/MangaNavIcon-64.png",
+		"128": "src/icons/MangaNavIcon-128.png"
+	},
 	"action": {
 		"default_title": "MangaNav",
-		"default_icon": "src/icons/MangaNavAdd.png"
+		"default_icon": "src/icons/MangaNavAdd-256.png"
 	},
 	"content_scripts": [
 		{
