@@ -5,8 +5,8 @@ chrome.action.onClicked.addListener(handleOnClick);
 const SETTINGS = {
 	DB_NAME: 'MangaNav-ActiveSites',
 	SITE_STATUS: false,
-	ICON_ON: 'src/icons/MangaNavRemove.png',
-	ICON_OFF: 'src/icons/MangaNavAdd.png'
+	ICON_ON: 'src/icons/MangaNavRemove-256.png',
+	ICON_OFF: 'src/icons/MangaNavAdd-256.png'
 };
 
 /**
